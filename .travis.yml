@@ -2,6 +2,8 @@ dist: 'trusty'
 language: node_js
 sudo: required
 node_js:
+  - 'node'
+  - '6.9.2'
   - '4.0'
 services: 
   - redis-server
@@ -17,6 +19,6 @@ before_script:
   - sudo service postgresql stop
   - cp test/config_lisk.json lisk-Linux-x86_64/config.json
   - cd lisk-Linux-x86_64; bash lisk.sh coldstart; cd ../
-  - cp test/config.json .
+  - cp test/config.test ./config.js
   - node app.js &> /dev/null &
   - sleep 5
